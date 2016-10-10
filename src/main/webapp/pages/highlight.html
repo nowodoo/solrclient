@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+<style>
+.sidebar-nav {
+	display:none!important;
+}
+</style>
+<script type="text/javascript" src="/resources/js/jquery-1.10.2.js"></script>
+<title>演示高亮</title>
+</head>
+<body>
+<span><input type="text"  name="key"  id="key"/></span>
+<input type="button" value="高亮获取用户信息" onclick="getHighLight();">
+
+<div>
+    <span id="highlighttext"></span>
+</div>
+<script type="text/javascript">
+function getHighLight(){
+
+jQuery.ajax({  
+    type : 'GET',  
+    contentType : 'application/json',  
+    url : '/user/highlight/'+$("#key").val(),
+    dataType : 'json',  
+    success : function(data) 
+    { 
+    	console.log(data);
+    	$("#highlighttext").html(data);
+    }
+});
+
+}
+
+</script>
+</body>
+</html>
